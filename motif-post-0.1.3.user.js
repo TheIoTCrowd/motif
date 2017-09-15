@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Moderator Tools Improved for Stack Exchange — Post Tweaks
 // @namespace    https://raw.githubusercontent.com/TheIoTCrowd/motif/master/
-// @version      0.1.2
+// @version      0.1.3
 // @description  Tweaks to moderator tools for Stack Exchange sites.
 // @author       Aurora0001
 // @match        https://*.stackexchange.com/questions/*
@@ -33,9 +33,10 @@
         line-height: 200%;
     }
     `);
-    
+
     $(document).ready(function() {
         $(".post-moderator-link").each(function(i, modLink) {
+            // Add timeline link to posts
             const idParts = modLink.id.split("-");
             const id = idParts[idParts.length - 1];
             const timelineLink = document.createElement("a");
@@ -44,10 +45,22 @@
             const postMenu = $(modLink).parent();
             postMenu.append(timelineLink);
         });
+
+        $(".user-info").has(".user-gravatar32 .anonymous-gravatar").each(function(i, userInfo) {
+            // Allow easier viewing of deleted users.
+            let userDetails = $(userInfo).find(".user-details");
+            const userName = userDetails.text().trim();
+            if (userName.indexOf("user") !== -1) {
+                const uid = userName.substring(4);
+                userDetails.html(`<a href="/users/${uid}">${userName}</a>`);
+            }
+        });
     });
-    
+
     $(document).ajaxSuccess(function(event, xhr, ajaxOptions) {
         if (ajaxOptions.url.indexOf("/admin/posts/issues") !== -1) {
+            // Add 'view flags' link to bottom of posts, move deleted comments link to more convenient place
+
             // The API call is of form site.stackexchange.com/admin/posts/issues/post1id;post2id;post3id?_=12489012589012
             // We just want post1id;post2id;post3id, and so on.
             let idsRegex = new RegExp(/(;?\d+)+/, "g");
