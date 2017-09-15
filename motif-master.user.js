@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Moderator Tools Improved for Stack Exchange
 // @namespace    https://raw.githubusercontent.com/TheIoTCrowd/motif/master/
-// @version      0.1.2
+// @version      0.1.3
 // @author       Aurora0001
 // @match        https://*.stackexchange.com/questions/*
 // @match        https://*.meta.stackexchange.com/questions/*
-// @require      motif-post-0.1.2.user.js
-// @grant        none
+// @require      motif-post-0.1.3.user.js
+// @grant        GM_addStyle
 // ==/UserScript==
 
 (function() {
