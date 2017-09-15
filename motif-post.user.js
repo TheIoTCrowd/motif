@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Moderator Tools Improved for Stack Exchange — Post Tweaks
 // @namespace    https://raw.githubusercontent.com/TheIoTCrowd/motif/master/
-// @version      0.1.1
+// @version      0.1.2
 // @description  Tweaks to moderator tools for Stack Exchange sites.
 // @author       Aurora0001
 // @match        https://*.stackexchange.com/questions/*
@@ -33,17 +33,19 @@
         line-height: 200%;
     }
     `);
-
-    $(".post-moderator-link").each(function(i, modLink) {
-        const idParts = modLink.id.split("-");
-        const id = idParts[idParts.length - 1];
-        const timelineLink = document.createElement("a");
-        timelineLink.href = "/admin/posts/timeline/" + id;
-        timelineLink.innerText = "timeline";
-        const postMenu = $(modLink).parent();
-        postMenu.append(timelineLink);
+    
+    $(document).ready(function() {
+        $(".post-moderator-link").each(function(i, modLink) {
+            const idParts = modLink.id.split("-");
+            const id = idParts[idParts.length - 1];
+            const timelineLink = document.createElement("a");
+            timelineLink.href = "/admin/posts/timeline/" + id;
+            timelineLink.innerText = "timeline";
+            const postMenu = $(modLink).parent();
+            postMenu.append(timelineLink);
+        });
     });
-
+    
     $(document).ajaxSuccess(function(event, xhr, ajaxOptions) {
         if (ajaxOptions.url.indexOf("/admin/posts/issues") !== -1) {
             // The API call is of form site.stackexchange.com/admin/posts/issues/post1id;post2id;post3id?_=12489012589012
