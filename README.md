@@ -1,6 +1,8 @@
 # Motif
 (**Mo**derator **T**ools **I**mproved **f**or Stack Exchange)
 
+[Install Directly](https://raw.githubusercontent.com/TheIoTCrowd/motif/master/motif-master.user.js)
+
 ## Features
 
 - View flags inline on the post, without having to load the more cluttered timeline or flag list.
