@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Moderator Tools Improved for Stack Exchange — Post Tweaks
 // @namespace    https://raw.githubusercontent.com/TheIoTCrowd/motif/master/
-// @version      0.1.0
+// @version      0.1.1
 // @description  Tweaks to moderator tools for Stack Exchange sites.
 // @author       Aurora0001
 // @match        https://*.stackexchange.com/questions/*
@@ -11,10 +11,6 @@
 
 (function() {
     'use strict';
-    if (StackExchange.options.user.isModerator == null) {
-        // If you're not a moderator... there ain't much point running this.
-        return;
-    }
 
     GM_addStyle(`
     .smt-flag-menu {
