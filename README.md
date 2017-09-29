@@ -3,6 +3,8 @@
 
 [Install Directly](https://raw.githubusercontent.com/TheIoTCrowd/motif/master/motif-master.user.js)
 
+**Note:** does not play nice with SEMTI itself, as I ended up just reimplementing the bits I used from there.
+
 ## Features
 
 - View flags inline on the post, without having to load the more cluttered timeline or flag list.
